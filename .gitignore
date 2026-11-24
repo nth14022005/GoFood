@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+.vscode/
+logs/
+*.log
+*.sql.gz
+*.bak
+*.db
+vendor/
+node_modules/

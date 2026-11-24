@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đánh Giá Khách Hàng - Go Food</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff7ec;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #e65c00;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .review {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .review img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .review-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .review-content {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Đánh Giá Khách Hàng</h1>
+
+    <div class="review">
+      <div class="review-header">
+        <img src="https://cdn-icons-png.flaticon.com/128/236/236831.png">
+        <div class="review-name">Nguyễn Thảo</div>
+      </div>
+      <div class="review-content">
+        Mình đặt pizza ở Go Food 3 lần rồi và lần nào cũng nóng hổi, thơm ngon như ăn tại tiệm! Giao hàng nhanh nữa ❤️
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="review-header">
+        <img src="https://cdn-icons-png.flaticon.com/128/219/219969.png">
+        <div class="review-name">Trần Minh</div>
+      </div>
+      <div class="review-content">
+        Món ăn đa dạng, giao hàng nhanh, nhân viên thân thiện. Sẽ ủng hộ lâu dài! ⭐⭐⭐⭐⭐
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="review-header">
+        <img src="https://cdn-icons-png.flaticon.com/128/2922/2922656.png">
+        <div class="review-name">Lê An</div>
+      </div>
+      <div class="review-content">
+        Combo 85k mà no nê luôn, lại còn miễn phí ship nữa chứ. Tuyệt vời!
+      </div>
+    </div>
+
+    <div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/236/236832.png">
+    <div class="review-name">Phạm Duy</div>
+  </div>
+  <div class="review-content">
+    Thực đơn dễ chọn, có cả burger, cơm, mì. Mình gọi lúc 11h30 mà 11h50 đã tới nơi! Quá nhanh luôn!
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/219/219983.png">
+    <div class="review-name">Linh Chi</div>
+  </div>
+  <div class="review-content">
+    Thức ăn gói kỹ, nóng hổi. Mình rất hài lòng vì có phiếu giảm giá cho khách cũ nữa. Rất chu đáo!
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/2922/2922688.png">
+    <div class="review-name">Trúc Mai</div>
+  </div>
+  <div class="review-content">
+    Mình là mẹ bỉm nên cực kỳ quan tâm vệ sinh. Go Food có kiểm định rõ ràng, nên rất yên tâm khi đặt món!
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png">
+    <div class="review-name">Tuấn Kiệt</div>
+  </div>
+  <div class="review-content">
+    Giao tận phòng ký túc xá dù trời mưa, nhân viên vẫn vui vẻ. Cho 5 sao luôn ✨
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140036.png">
+    <div class="review-name">Đỗ Thanh</div>
+  </div>
+  <div class="review-content">
+    Giao đồ ăn rất đúng giờ, phần ăn lớn, đặc biệt gà rất giòn. Mình đặt 2 lần đều hài lòng.
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140052.png">
+    <div class="review-name">Ngọc Yến</div>
+  </div>
+  <div class="review-content">
+    Giao hàng nhanh hơn dự kiến, bạn giao hàng lịch sự. Mình thích nhất là phần nước chấm đi kèm!
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140046.png">
+    <div class="review-name">Lê Văn Hòa</div>
+  </div>
+  <div class="review-content">
+    Trải nghiệm tuyệt vời! Từ giao diện đặt món đến phục vụ đều mượt mà. Đề xuất nên có thêm món chè tráng miệng.
+  </div>
+</div>
+
+<div class="review">
+  <div class="review-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140050.png">
+    <div class="review-name">Nguyễn Lộc</div>
+  </div>
+  <div class="review-content">
+    Đã thử combo cơm gà xối mỡ, thấy hợp vị, không dầu mỡ nhiều. Rất hợp với sinh viên như mình.
+  </div>
+</div>
+  </div>
+</body>
+</html>

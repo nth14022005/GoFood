@@ -1,0 +1,77 @@
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: #fffdfc;
+      color: #333;
+    }
+   header {
+  background-color: #ffb74d;
+  color: #fff;
+  padding: 0.5rem 2rem;       /* Giảm padding trên dưới */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;               /* Đặt chiều cao cố định */
+}
+    nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background-color 0.2s, color 0.2s;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Khi rê chuột vào */
+nav a:hover {
+  background-color: #ff5722;
+}
+
+/* Khi bấm vào */
+nav a:active {
+  background-color: #ffffff;
+  color: #ff5722; /* Màu cam đậm */
+}
+
+    main {
+      padding: 2rem;
+    }
+    .promo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .promo-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    .promo-item:hover {
+      transform: translateY(-5px);
+    }
+    .promo-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .promo-item h3 {
+      color: #ff594d;
+      font-size: 1.2rem;
+      margin: 1rem;
+    }
+    .promo-item p {
+      margin: 0 1rem 1rem;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f0f0f0;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  

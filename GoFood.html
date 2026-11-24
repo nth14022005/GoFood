@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Go Food</title>
+  <link rel="stylesheet" href="css.css">
+  <style>
+    /* CSS thêm vào để hỗ trợ phần tìm kiếm */
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 5px 10px;
+      background-color: #fff;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      padding: 5px;
+    }
+
+    .items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 món 1 hàng */
+  gap: 20px;
+  margin-top: 20px;
+  max-width: 1100px; /* Đặt chiều rộng tối đa */
+  margin-left: auto;
+  margin-right: auto; /* Căn giữa */
+  padding: 0 10px;
+}
+
+.item {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.item img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image/Go Food.png" alt="Go Food Logo">
+    <nav>
+      <ul class="navbar">
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="khuyenmai.html">Khuyến mãi</a></li>
+        <li><a href="#chinh-sach">Chính sách</a></li>
+        <li><a href="#contact">Hỗ trợ</a></li>
+    </ul>
+    </nav>
+  </header>
+
+<!-- Danh sách phân loại món ăn -->
+<div class="food-marquee-container">
+  <div class="food-marquee-track">
+    <img src="https://media.istockphoto.com/id/1461350378/vi/vec-to/b%E1%BB%99-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-th%E1%BB%A9c-%C4%83n-nhanh.jpg?s=612x612&w=0&k=20&c=HQt1Lnj6pdf8oiqRuC_qAilLUqsQpeZLiSZBhQbOSHA=" alt="Phở bò">
+    <img src="https://images.vexels.com/media/users/3/239354/raw/2dfd63916acf020483e322a4e18965a1-fast-food-illustration-pack.jpg" alt="Bún chả">
+    <img src="https://bamahas.com/wp-content/uploads/2018/09/04.jpg" alt="Cơm gà">
+    <img src="https://cdn.hercampus.com/SH6M70M3/as/8ktfmvqxpm8h7xtmgs2p39v/fastfoodmealdeals_1?width=398&height=256&fit=crop&auto=webp&dpr=4" alt="Cơm gà">
+    <img src="https://vietnamteachingjobs.com/wp-content/uploads/2022/04/special-offers-for-fast-food-in-vietnam.jpg" alt="Cơm gà">
+    <img src="https://vietnamteachingjobs.com/wp-content/uploads/2022/04/jolibee-fast-food-in-vietnam.jpg" alt="Cơm gà">
+    <img src="https://xyz.com.vn/wp-content/uploads/2019/05/Fastfood-0-e1559113906872.jpg" alt="Cơm gà">
+    <img src="https://images.theconversation.com/files/410720/original/file-20210712-46002-1ku5one.jpg?ixlib=rb-4.1.0&rect=0%2C71%2C994%2C497&q=45&auto=format&w=1356&h=668&fit=crop" alt="Cơm gà">
+    <img src="https://media.istockphoto.com/id/952043566/vi/vec-to/%C4%91%E1%BA%B7t-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-th%E1%BB%A9c-%C4%83n-nhanh-c%E1%BB%91c-cola-hamburger-ch%C3%A2n-g%C3%A0-r%C3%A1n-pizza.jpg?s=612x612&w=0&k=20&c=UxF3cE-ENlR1HjY8bqrNU3YZyoKvdkCjOLiwXkBZKxk=" alt="Cơm gà">
+
+    <!-- Lặp lần 2 (để tạo vòng lặp mượt) -->
+    <img src="https://media.istockphoto.com/id/1461350378/vi/vec-to/b%E1%BB%99-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-th%E1%BB%A9c-%C4%83n-nhanh.jpg?s=612x612&w=0&k=20&c=HQt1Lnj6pdf8oiqRuC_qAilLUqsQpeZLiSZBhQbOSHA=" alt="Phở bò">
+    <img src="https://images.vexels.com/media/users/3/239354/raw/2dfd63916acf020483e322a4e18965a1-fast-food-illustration-pack.jpg" alt="Bún chả">
+    <img src="https://bamahas.com/wp-content/uploads/2018/09/04.jpg" alt="Cơm gà">
+    <img src="https://cdn.hercampus.com/SH6M70M3/as/8ktfmvqxpm8h7xtmgs2p39v/fastfoodmealdeals_1?width=398&height=256&fit=crop&auto=webp&dpr=4" alt="Cơm gà">
+    <img src="https://vietnamteachingjobs.com/wp-content/uploads/2022/04/special-offers-for-fast-food-in-vietnam.jpg" alt="Cơm gà">
+    <img src="https://vietnamteachingjobs.com/wp-content/uploads/2022/04/jolibee-fast-food-in-vietnam.jpg" alt="Cơm gà">
+    <img src="https://xyz.com.vn/wp-content/uploads/2019/05/Fastfood-0-e1559113906872.jpg" alt="Cơm gà">
+    <img src="https://images.theconversation.com/files/410720/original/file-20210712-46002-1ku5one.jpg?ixlib=rb-4.1.0&rect=0%2C71%2C994%2C497&q=45&auto=format&w=1356&h=668&fit=crop" alt="Cơm gà">
+    <img src="https://media.istockphoto.com/id/952043566/vi/vec-to/%C4%91%E1%BA%B7t-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-th%E1%BB%A9c-%C4%83n-nhanh-c%E1%BB%91c-cola-hamburger-ch%C3%A2n-g%C3%A0-r%C3%A1n-pizza.jpg?s=612x612&w=0&k=20&c=UxF3cE-ENlR1HjY8bqrNU3YZyoKvdkCjOLiwXkBZKxk=" alt="Cơm gà">
+  </div>
+</div>
+
+<div class="food-categories">
+  <span data-category="Tất cả">Tất cả</span>
+  <span data-category="Hamburger">Hamburger</span>
+  <span data-category="Gà Rán">Gà Rán</span>
+  <span data-category="Pizza">Pizza</span>
+  <span data-category="Mì Ý">Mì Ý</span>
+  <span data-category="Đồ uống">Đồ uống</span>
+  <span data-category="Thức ăn nhẹ">Thức ăn nhẹ</span>
+  <span data-category="Tráng miệng">Tráng miệng</span>
+  <span data-category="Combo">Combo</span>
+</div>
+ <div class="search-bar">
+  🔍 <input type="text" id="searchInput" placeholder="Tìm món ăn..." onkeyup="searchFood()">
+</div>
+</div>
+
+<div class="items" id="foodList">
+  <div class="item"data-category="Mì Ý">
+    <img src="https://tiki.vn/blog/wp-content/uploads/2023/04/2PGAHdXManXStd-pJYw3ju50jTMBnhx_FYaCBxWEMXSYCZGfgiK_5i_C0M8Lz8DWfsZGiFhFidJ8MHEPh215V_L0Ele0vuth3lDE7Vf70tFyZj3ef2bMY76CgvJaix0KTb6jHjepYTSQDawg46R9vv8.jpg" alt="Mì Ý">
+    <h3>Mì Ý Sốt Bò Hầm</h3>
+    <p>45.000đ</p>
+    <div class="add-cart-row">
+      <button class="add-btn" onclick="addToCart('Mì Ý Sốt Bò Hầm', 45000, 'https://tiki.vn/blog/wp-content/uploads/2023/04/2PGAHdXManXStd-pJYw3ju50jTMBnhx_FYaCBxWEMXSYCZGfgiK_5i_C0M8Lz8DWfsZGiFhFidJ8MHEPh215V_L0Ele0vuth3lDE7Vf70tFyZj3ef2bMY76CgvJaix0KTb6jHjepYTSQDawg46R9vv8.jpg')">+ Thêm giỏ hàng</button>
+    </div>
+  </div>
+
+  <div class="item"data-category="Pizza">
+    <img src="https://www.pizzaexpress.vn/wp-content/uploads/2020/11/ceac24f9e927f4b6256611c9c8228c76.jpg" alt="Pizza">
+    <h3>Pizza xúc xích</h3>
+    <p>95.000đ</p>
+    <button class="add-btn" onclick="addToCart('Pizza Xúc Xích', 95000, 'https://www.pizzaexpress.vn/wp-content/uploads/2020/11/ceac24f9e927f4b6256611c9c8228c76.jpg')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Gà Rán">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/2-Fried-Chicken.jpg?v=LWkqBL" alt="Gà rán">
+    <h3>Gà rán giòn</h3>
+    <p>40.000đ</p>
+    <button class="add-btn" onclick="addToCart('Gà Rán Giòn', 40000, 'https://static.kfcvietnam.com.vn/images/items/lg/2-Fried-Chicken.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Combo">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/D-TENDER.jpg?v=LWkqBL" alt="Combo">
+    <h3>Combo 1 người</h3>
+    <p>85.000đ</p>
+    <button class="add-btn" onclick="addToCart('Combo 1 người', 85000, 'https://static.kfcvietnam.com.vn/images/items/lg/D-TENDER.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Combo">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/DBUCKET2.jpg?v=LWkqBL" alt="Combo nhóm 3">
+    <h3>Combo nhóm 3</h3>
+    <p>209.000đ</p>
+    <button class="add-btn" onclick="addToCart('Combo nhóm 3', 209000, 'https://static.kfcvietnam.com.vn/images/items/lg/DBUCKET2.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Đồ uống">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/PEPSI_CAN.jpg?v=LWkqBL" alt="Pepsi">
+    <h3>Pepsi Lon</h3>
+    <p>15.000đ</p>
+    <button class="add-btn" onclick="addToCart('Pepsi Lon', 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/PEPSI_CAN.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Đồ uống">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/Sting.jpg?v=LWkqBL" alt="Sting">
+    <h3>Sting Lon</h3>
+    <p>15.000đ</p>
+    <button class="add-btn" onclick="addToCart('Sting Lon', 15000, 'https://static.kfcvietnam.com.vn/images/items/lg/Sting.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Đồ uống">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/AQUAFINA.jpg?v=LWkqBL" alt="Aquafina">
+    <h3>Aquafina 500ml</h3>
+    <p>10.000đ</p>
+    <button class="add-btn" onclick="addToCart('Aquafina 500ml', 10000, 'https://static.kfcvietnam.com.vn/images/items/lg/AQUAFINA.jpg?v=LWkqBL')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Thức ăn nhẹ">
+    <img src="https://www.lottemart.vn/media/catalog/product/cache/0x0/0/4/0400285520000-1.jpg.webp" alt="Hot Dog Xốt Phô Mai">
+    <h3>Hot Dog Xốt Phô Mai</h3>
+    <p>30.000đ</p>
+    <button class="add-btn" onclick="addToCart('Hot Dog Xốt Phô Mai', 30000, 'https://www.lottemart.vn/media/catalog/product/cache/0x0/0/4/0400285520000-1.jpg.webp')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Thức ăn nhẹ">
+    <img src="https://product.hstatic.net/1000304337/product/sfdergf_4d536715dd02491bb2d753550f41aa9d.png" alt="Phô Mai Que">
+    <h3>Phô Mai Que</h3>
+    <p>40.000đ</p>
+    <button class="add-btn" onclick="addToCart('Phô Mai Que', 40000, 'https://product.hstatic.net/1000304337/product/sfdergf_4d536715dd02491bb2d753550f41aa9d.png')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Tráng miệng">
+    <img src="https://www.cookwithnabeela.com/wp-content/uploads/2024/02/ChocolateDippedDoughnuts-500x500.webp" alt="Donut Chocolate">
+    <h3>Donut Chocolate</h3>
+    <p>30.000đ</p>
+    <button class="add-btn" onclick="addToCart('Donut Chocolate', 30000, 'https://www.cookwithnabeela.com/wp-content/uploads/2024/02/ChocolateDippedDoughnuts-500x500.webp')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Thức ăn nhẹ">
+    <img src="https://torkifood.vn/wp-content/uploads/2023/10/tacos-1.jpg" alt="Phô Mai Que">
+    <h3>Tacos</h3>
+    <p>60.000đ</p>
+    <button class="add-btn" onclick="addToCart('Tacos', 60000, 'https://torkifood.vn/wp-content/uploads/2023/10/tacos-1.jpg')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Thức ăn nhẹ">
+    <img src="https://images.lecker.de/klassisches-club-sandwich-mit-chips,id=d0e1a5a9,b=lecker,w=1200,rm=sk.jpeg" alt="Sandwich">
+    <h3>Sandwich</h3>
+    <p>45.000đ</p>
+    <button class="add-btn" onclick="addToCart('Sandwich', 45000, 'https://images.lecker.de/klassisches-club-sandwich-mit-chips,id=d0e1a5a9,b=lecker,w=1200,rm=sk.jpeg')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Gà Rán">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/TENDERS-5.jpg?v=L7DyN4" alt="Gà Rán Tender">
+    <h3> Gà Rán Tender</h3>
+    <p>40.000đ</p>
+    <button class="add-btn" onclick="addToCart('Gà Rán Tender', 40000, 'https://static.kfcvietnam.com.vn/images/items/lg/TENDERS-5.jpg?v=L7DyN4')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Tráng miệng">
+    <img src="https://i.pinimg.com/564x/f5/04/68/f5046807f22e9ac25f922379f68620e5.jpg" alt="Muffin">
+    <h3>Muffin</h3>
+    <p>30.000đ</p>
+    <button class="add-btn" onclick="addToCart('Muffin', 30000, 'https://product.hstatic.net/1000304337/product/sfdergf_4d536715dd02491bb2d753550f41aa9d.pnhttps://i.pinimg.com/564x/f5/04/68/f5046807f22e9ac25f922379f68620e5.jpg')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Hamburger">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/Burger-Zinger.jpg?v=L7DyN4" alt="Burger Zinger">
+    <h3>Burger Zinger</h3>
+    <p>49.000đ</p>
+    <button class="add-btn" onclick="addToCart('Burger Zinger', 49000, 'https://static.kfcvietnam.com.vn/images/items/lg/Burger-Zinger.jpg?v=L7DyN4')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Mì Ý">
+    <img src="https://bepmina.vn/wp-content/uploads/2021/08/mon-mi-y-sot-kem-thit-xong-khoi.jpeg" alt="Mì Ý Sốt Kem">
+    <h3>Mì Ý Sốt Kem</h3>
+    <p>40.000đ</p>
+    <button class="add-btn" onclick="addToCart('Mì Ý Sốt Kem', 40000, 'https://bepmina.vn/wp-content/uploads/2021/08/mon-mi-y-sot-kem-thit-xong-khoi.jpeg')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Hamburger">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/Burger-Flava.jpg?v=L7DyN4" alt="Burger Gà Quay Flava">
+    <h3>Burger Gà Quay Flava</h3>
+    <p>53.000đ</p>
+    <button class="add-btn" onclick="addToCart('Burger Gà Quay Flava', 53000, 'https://static.kfcvietnam.com.vn/images/items/lg/Burger-Flava.jpg?v=L7DyN4')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Pizza">
+    <img src="https://pizzahem.com/wp-content/uploads/lime.png" alt="Pizza Hải Sản">
+    <h3>Pizza Hải Sản</h3>
+    <p>148.000đ</p>
+    <button class="add-btn" onclick="addToCart('Pizza Hải Sản', 148000, 'https://pizzahem.com/wp-content/uploads/lime.png')">+ Thêm giỏ hàng</button>
+  </div>
+
+  <div class="item"data-category="Thức ăn nhẹ">
+    <img src="https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/p/h/ph_n_n_ph_-_5.png" alt="Súp Bí Đỏ">
+    <h3>Súp Bí Đỏ</h3>
+    <p>15.000đ</p>
+    <button class="add-btn" onclick="addToCart('Súp Bí Đỏ', 15000, 'https://jollibee.com.vn/media/catalog/product/cache/9011257231b13517d19d9bae81fd87cc/p/h/ph_n_n_ph_-_5.png')">+ Thêm giỏ hàng</button>
+  </div>
+</div>
+  </section>
+
+  <div class="main-content">
+    <!-- Danh sách món ăn -->
+    <div class="product-list">
+      <!-- Các món ăn như Mì Ý, Pizza, Gà rán, v.v. -->
+    </div>
+    <div class="popular-dishes">
+      <h2>✨ Món Ăn Được Yêu Thích</h2>
+<div class="dish-slider">
+  <div class="dish">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/Burger-Flava.jpg?v=L7DyN4" alt="Burger Gà Quay Flava" />
+    <span class="led-text">Burger Gà Quay Flava</span>
+  </div>
+  <div class="dish">
+    <img src="https://static.kfcvietnam.com.vn/images/items/lg/2-Fried-Chicken.jpg?v=LWkqBL" alt="Gà rán giòn" />
+    <span class="led-text">Gà Rán Giòn</span>
+  </div>
+  <div class="dish">
+    <img src="https://www.pizzaexpress.vn/wp-content/uploads/2020/11/ceac24f9e927f4b6256611c9c8228c76.jpg" alt="Pizza xúc xích" />
+    <span class="led-text">Pizza Xúc Xích</span>
+  </div>
+</div>
+</div>
+     
+  <section class="hero">
+    <h2>Mở web một giây - Món ngon tới ngay‼️</h2>
+    <p style="font-size: 20px;">Đặt món ăn nhanh yêu thích của bạn chỉ trong vài cú click ♥️</p>
+  </section>
+  
+ <section id="contact" class="contact">
+  <div class="contact-grid">
+    <!-- Gộp Hotline và Email vào 1 cột -->
+    <div class="info">
+  
+      
+  <h2 class="title">Liên hệ</h2>
+  <hr class="separator">
+    📞 Hotline: <strong>0909 554 226</strong><br>
+    ✉️ Email: <strong>contact@example.com</strong><br>
+    📍 Địa chỉ: <strong>255 Nguyễn Văn Cừ Nối Dài,               An Bình - TP.CầnThơ</strong></p>
+    </div>
+    
+
+ <div class="service-description">
+  <h2 class="title">Chính Sách</h2>
+  <section id="chinh-sach"></section>
+  <hr class="separator">
+  <div><a href="Chinhsachbaomat.html"><strong>          •   Chính Sách Bảo Mật</strong></a></div>
+  <div><a href="Chinhsachgiaohang.html"><strong>          •   Chính Sách Giao Hàng</strong></a></div>
+  <div><a href="Chinhsachthanhtoan.html"><strong>          •   Chính Sách Thanh Toán</strong></a></div>
+  <div><a href="Chinhsachdoitra.html"><strong>          •   Chính Sách Đổi Trả</strong></a></div>
+</div>
+
+<style>
+  .service-description a {
+    text-decoration: none;
+    color: rgb(255, 255, 255); /* Có thể đổi màu tùy ý */
+    text-align: left;
+  }
+
+  .service-description a:hover {
+    color: rgb(255, 0, 0); /* Khi rê chuột vào sẽ đổi màu, tùy chỉnh theo ý bạn */
+  }
+</style>
+
+  <div class="service-description">
+  <h2 class="title">🍔Go Food</h2>
+  <hr class="separator">
+  <p class="info"><strong>Giao hàng mọi nơi trong thời gian nhanh nhất, nhận hàng nhanh chóng. Hình ảnh chụp thật 100%. Đảm bảo sản phẩm đúng như hình đăng tải. Liên hệ tư vấn nhanh chóng khi khách hàng đặt sản phẩm.</strong></p>
+</div>
+</section>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+.contact {
+  text-align: center;
+  padding: 50px 20px;
+  background: #ffb74d;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.contact h2 {
+  font-size: 25px;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.contact .info {
+  font-size: 20px;
+  color: #333;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.contact .info strong {
+  color: #ffffff;
+}
+</style>
+  
+  <style>
+  .contact {
+    text-align: center;
+    padding: 30px 10px;
+  }
+  
+  .decor-line {
+    position: relative;
+    margin: 20px auto;
+    width: 80%;
+    height: 1px;
+    background-color: #f58e07;
+  }
+  
+  .decor-line span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffb74d;
+    padding: 0 10px;
+    font-size: 24px;
+  }
+  </style>
+  
+</body>
+</html>
+
+<!-- Navbar đơn giản góc trên bên phải -->
+<div style="position: absolute; top: 20px; right: 30px; display: flex; gap: 15px; font-family: Arial;">
+  <a href="login.php"
+   style="
+     text-decoration: none;
+     color: #fff;
+     font-weight: 600;
+     padding: 10px 24px;
+     border-radius: 30px;
+     border: 2px solid #fb0509;
+     background: linear-gradient(90deg, #ff4d4f, #ff7875);
+     box-shadow: 0 4px 10px rgba(255, 77, 79, 0.4);
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     transition: all 0.3s ease;
+     display: inline-block;
+   "
+   onmouseover="this.style.background='linear-gradient(90deg, #ff7875, #ff4d4f)'; this.style.boxShadow='0 6px 14px rgba(255, 120, 117, 0.6)';"
+   onmouseout="this.style.background='linear-gradient(90deg, #ff4d4f, #ff7875)'; this.style.boxShadow='0 4px 10px rgba(255, 77, 79, 0.4)';"
+>
+  Đăng nhập
+</a>
+  
+<!-- Nút Giỏ hàng -->
+<div style="position: relative; display: flex; align-items: center;">
+  <button onclick="toggleCart()"
+          style="background-color: #ff0000; color: white; border: none;
+                 padding: 10px 16px; border-radius: 999px; cursor: pointer;
+                 font-size: 16px; display: flex; align-items: center; gap: 8px;
+                 box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: background-color 0.3s;">
+    🛒 <span>Giỏ hàng</span>
+  </button>
+  <div id="cartCount"
+       style="position: absolute; top: -6px; right: -6px;
+              background-color: #ffea00; color: white; width: 22px; height: 22px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-size: 12px; font-weight: bold; box-shadow: 0 0 0 2px white;">
+    0
+  </div>
+</div>
+</div>
+
+<!-- Giỏ hàng danh sách -->
+<div id="cartModal" style="position: fixed; top: 20%; right: 20px; background: white; 
+                           border: 1px solid #ddd; padding: 10px; width: 400px; display: none; 
+                           box-shadow: 0 0 10px rgba(0,0,0,0.1); z-index: 999;">
+  <h3>Giỏ hàng</h3>
+  <ul id="cartList"></ul>
+  <button onclick="clearCart()" style="background-color: #ff5722; color: white; padding: 8px; width: 100%; 
+                                        border: none; border-radius: 4px; cursor: pointer;">
+    Xóa giỏ hàng
+    <button onclick="checkoutCart()" style="background-color: #4caf50; color: white; padding: 8px; width: 100%; 
+    border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">
+    Thanh toán
+  </button>
+  
+</div>
+
+<title>FastFood Chatbot</title>
+  <style>
+    .chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #ff6600, #ff8533);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .chat-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #e65c00, #ff9933);
+    }
+    .chat-box {
+      width: 320px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #fff;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .chat-box.show {
+      display: flex;
+    }
+    .chat-header {
+      background: linear-gradient(90deg, #ff6600, #ff9933);
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .chat-header .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+    .chat-body {
+      padding: 12px;
+      height: 200px;
+      overflow-y: auto;
+      background: #fafafa;
+      font-size: 14px;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #eee;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+    .send-btn {
+      padding: 10px 15px;
+      background: #ff6600;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .send-btn:hover {
+      background: #e65c00;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nút bật chat -->
+<div class="chat-btn">Chat</div>
+
+<!-- Hộp chat -->
+<div class="chat-box">
+  <div class="chat-header">
+    <span>Hỗ trợ</span>
+    <button class="close-btn">×</button>
+  </div>
+  <div class="chat-body">
+    <p><strong>Go Food:</strong> Chào bạn! Bạn cần hỗ trợ gì?</p>
+  </div>
+  <div class="chat-input">
+    <input type="text" placeholder="Nhập tin nhắn..." />
+    <button class="send-btn">Gửi</button>
+  </div>
+</div>
+
+<script>
+  const chatBtn = document.querySelector('.chat-btn');
+  const chatBox = document.querySelector('.chat-box');
+  const closeBtn = document.querySelector('.close-btn');
+  const sendBtn = document.querySelector('.send-btn');
+  const inputField = document.querySelector('.chat-input input');
+  const chatBody = document.querySelector('.chat-body');
+
+  // Hiện hộp chat khi bấm nút Chat
+  chatBtn.addEventListener('click', () => {
+    chatBox.classList.add('show');
+  });
+
+  // Ẩn hộp chat khi bấm nút X
+  closeBtn.addEventListener('click', () => {
+    chatBox.classList.remove('show');
+  });
+
+  // Hàm gửi tin nhắn
+  function sendMessage() {
+    const message = inputField.value.trim();
+    if (message === '') return;
+
+    // Hiển thị tin nhắn người dùng
+    chatBody.innerHTML += `<p><strong>Bạn:</strong> ${message}</p>`;
+
+    // Bot trả lời theo từ khóa
+    let reply = 'Xin lỗi, mình chưa hiểu ý bạn.';
+    const msg = message.toLowerCase();
+
+    if (msg.includes('Menu')) {
+      reply = 'Bạn có thể xem thực đơn tại mục "Menu" nha!';
+    } else if (msg.includes('Khi nào mở cửa')) {
+      reply = 'FastFood mở cửa từ 8h đến 22h mỗi ngày.';
+    } else if (msg.includes('Bên shop có giao hàng không') || msg.includes('ship')) {
+      reply = 'Dạ có! Bên mình có giao hàng tận nơi.';
+    } else if (msg.includes('Gợi ý cho tôi món ngon') || msg.includes('gợi ý')) {
+      reply = 'Gợi ý: Gà rán cay, burger bò phô mai rất được ưa chuộng!';
+    } else if ( msg.includes('hi') || msg.includes('chào')) {
+      reply = 'Chào bạn! Mình có thể giúp gì cho bạn hôm nay?';
+    } else if (msg.includes('Cảm ơn') || msg.includes('thank')) {
+      reply = 'Rất vui được hỗ trợ bạn!';
+    }
+
+    // Hiển thị tin nhắn bot sau 400ms
+    setTimeout(() => {
+      chatBody.innerHTML += `<p><strong>Go Food:</strong> ${reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 400);
+
+    inputField.value = '';
+  }
+
+  // Bấm nút Gửi
+  sendBtn.addEventListener('click', sendMessage);
+
+  // Bấm Enter
+  inputField.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
+
+</body>
+</html>
+<script src="Cart.js"></script>
+<script src="Cart2.js"></script>
+<script src="Chatbox.js"></script>
+<script src="Searchfood.js"></script>

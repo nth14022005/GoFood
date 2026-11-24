@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh toán đơn hàng</title>
+</head>
+<body>
+    <h1>Thông tin đặt hàng</h1>
+    <form id="checkoutForm">
+        <label>Họ tên:</label><br>
+        <input type="text" name="customer_name" required><br><br>
+
+        <label>Số điện thoại:</label><br>
+        <input type="text" name="customer_phone" required><br><br>
+
+        <label>Địa chỉ giao hàng:</label><br>
+        <textarea name="customer_address" required></textarea><br><br>
+
+        <button type="submit">Đặt hàng</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px; color: green;"></div>
+
+    <div id="cartModal" style="position: fixed; top: 20%; right: 20px; background: white;
+                               border: 1px solid #ddd; padding: 10px; width: 400px; display: none;
+                               box-shadow: 0 0 10px rgba(0,0,0,0.1); z-index: 999;">
+      <h3>Giỏ hàng</h3>
+      <ul id="cartList"></ul>
+      <span id="cartCount">0</span>
+      <span id="totalPrice">0đ</span>
+      <button onclick="checkout()">Thanh toán</button>
+      <button onclick="closeCart()">Đóng</button>
+    </div>
+
+    <script>
+    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const data = {
+            customer_name: formData.get("customer_name"),
+            customer_phone: formData.get("customer_phone"),
+            customer_address: formData.get("customer_address")
+        };
+
+        fetch("checkout.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(json => {
+            document.getElementById("result").innerText = json.message;
+            if (json.success) {
+                document.getElementById("checkoutForm").reset();
+            }
+        })
+        .catch(err => {
+            document.getElementById("result").style.color = "red";
+            document.getElementById("result").innerText = "Lỗi: " + err.message;
+        });
+    });
+    </script>
+</body>
+</html>
